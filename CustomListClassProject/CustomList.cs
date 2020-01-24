@@ -15,11 +15,23 @@ namespace CustomListClassProject
         public T this[int index] 
         { 
             get 
-            { 
-                return items[index]; 
+            {
+                if (index < 0 || index >= count)
+                {
+                    throw new IndexOutOfRangeException();
+                }
+                else
+                {
+                    return items[index];
+                }
+                     
             } 
             set 
-            { 
+            {
+                if (index < 0 || index >= count)
+                {
+                    throw new IndexOutOfRangeException();
+                }
                 items[index] = value; 
             } 
         }
@@ -37,20 +49,20 @@ namespace CustomListClassProject
         {
             if (Count == Capacity)
             {
-                T[] tempCopy = new T[Count];
-                Capacity = Capacity * 2;
-                for (int i = 0; i < count; i++)
-                {
-                    tempCopy[i] = items[i];
-                }
-                items = new T[Capacity];
-                for (int i = 0; i < count; i++)
-                {
-                    items[i] = tempCopy[i]; 
-                }
+                IncreasedCapacity();
             }
             items[Count] = item;
             count++;
+        }
+        public void IncreasedCapacity()
+        {
+            T[] tempCopy = items;
+            Capacity = Capacity * 2;
+            items = new T[Capacity];
+            for (int i = 0; i < count; i++)
+            {
+                items[i] = tempCopy[i];
+            }
         }
 
     }
