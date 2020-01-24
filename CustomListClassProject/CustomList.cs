@@ -8,21 +8,50 @@ namespace CustomListClassProject
 {
     public class CustomList<T>
     {
+        int count;
         T[] items;
-        public int Count { get; }
+        public int Count { get { return count; } }
         public int Capacity { get; set; }
-        public int Contain { get; }
-        public CustomList()
+        public T this[int index] 
+        { 
+            get 
+            { 
+                return items[index]; 
+            } 
+            set 
+            { 
+                items[index] = value; 
+            } 
+        }
+
+    public CustomList()
         {
             Capacity = 4;
-            items = new T[0];
-            Count = 0;
+            items = new T[Capacity];
+            count = 0;
             
-                        
+
+
         }
         public void Add(T item)
         {
-           if(new item)
+            if (Count == Capacity)
+            {
+                T[] tempCopy = new T[Count];
+                Capacity = Capacity * 2;
+                for (int i = 0; i < count; i++)
+                {
+                    tempCopy[i] = items[i];
+                }
+                items = new T[Capacity];
+                for (int i = 0; i < count; i++)
+                {
+                    items[i] = tempCopy[i]; 
+                }
+            }
+            items[Count] = item;
+            count++;
         }
+
     }
 }

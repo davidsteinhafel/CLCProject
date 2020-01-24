@@ -12,7 +12,7 @@ namespace CustomListClassProject
         {
             List<int> list1 = new List<int>() ;
             list1.Add(1);
-            list1.Count
+            list1.Count;
         }
     }
 }
