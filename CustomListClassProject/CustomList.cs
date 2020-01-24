@@ -64,6 +64,10 @@ namespace CustomListClassProject
                 items[i] = tempCopy[i];
             }
         }
+        public void Remove(T item)
+        {
+
+        }
 
     }
 }

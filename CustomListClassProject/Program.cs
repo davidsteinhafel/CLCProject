@@ -11,7 +11,7 @@ namespace CustomListClassProject
         static void Main(string[] args)
         {
             List<int> list1 = new List<int>() ;
-            list1.Add(1);
+            list1.Remove(1);
             
         }
     }
