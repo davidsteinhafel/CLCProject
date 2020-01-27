@@ -107,9 +107,10 @@ namespace CustomListProjectTest
             myList.Add(value);
             myList.Add(value1);
             myList.Add(value2);
+            myList.Remove(value);
             myList.Remove(value1);
 
-            Assert.AreEqual(expectedValue, myList[1]);
+            Assert.AreEqual(expectedValue, myList[0]);
         }
         [TestMethod]
         public void CheckIfItemRemovedSuccesfully()
