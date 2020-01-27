@@ -72,7 +72,7 @@ namespace CustomListProjectTest
         public void CheckZeroIndexAfterAddingMultiples()
         {
             CustomList<int> myList = new CustomList<int>();
-            
+
             int expectedValue = 2;
 
             myList.Add(2);
@@ -116,7 +116,7 @@ namespace CustomListProjectTest
         public void CheckIndexAfterRemoveWithMultipleNonRemoveDup()
         {
             CustomList<int> myList = new CustomList<int>();
-  
+
             int expectedValue = 4;
 
             myList.Add(2);
@@ -154,7 +154,7 @@ namespace CustomListProjectTest
             myList.Add(value2);
             myList.Remove(value1);
 
-            Assert.AreEqual(expectedValue, myList[1]);  
+            Assert.AreEqual(expectedValue, myList[1]);
         }
         [TestMethod]
         public void CheckZeroIndexWhenMutliplesRemoved()
@@ -222,6 +222,32 @@ namespace CustomListProjectTest
             string expectedValue = "davidcharliemattnevin";
 
             Assert.AreEqual(expectedValue, myList.ToString());
+        }
+        [TestMethod]
+        public void AddingTwoLists()
+        {
+            CustomList<int> myList = new CustomList<int>();
+            CustomList<int> otherList = new CustomList<int>();
+            myList.Add(1);
+            otherList.Add(2);
+            CustomList<int> actualValue = myList + otherList;
+
+
+            Assert.AreEqual("12", actualValue.ToString());
+        }
+        [TestMethod]
+        public void AddingTwoDifferentSizeLists()
+        {
+            CustomList<int> myList = new CustomList<int>();
+            CustomList<int> otherList = new CustomList<int>();
+            myList.Add(1);
+            myList.Add(2);
+            myList.Add(3);
+            otherList.Add(4);
+            otherList.Add(4);
+            CustomList<int> actualValue = myList + otherList;
+
+            Assert.AreEqual("12344", actualValue.ToString());
         }
     }
 }
