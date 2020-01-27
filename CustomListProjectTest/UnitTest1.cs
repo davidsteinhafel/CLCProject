@@ -186,5 +186,42 @@ namespace CustomListProjectTest
 
             Assert.AreEqual(expectedValue, myList.Count);
         }
+        [TestMethod]
+        public void StringifyInteger()
+        {
+            CustomList<int> myList = new CustomList<int>();
+            myList.Add(1);
+            myList.ToString();
+            string expectedValue = "1";
+
+            Assert.AreEqual(expectedValue, myList.ToString());
+        }
+        [TestMethod]
+        public void StringifyMultipleIntegers()
+        {
+            CustomList<int> myList = new CustomList<int>();
+            myList.Add(1);
+            myList.Add(2);
+            myList.Add(3);
+            myList.Add(4);
+            myList.ToString();
+            string expectedValue = "1234";
+
+            Assert.AreEqual(expectedValue, myList.ToString());
+        }
+        [TestMethod]
+        public void StringifyStringList()
+        {
+            CustomList<string> myList = new CustomList<string>();
+            myList.Add("david");
+            myList.Add("charlie");
+            myList.Add("matt");
+            myList.Add("nevin");
+
+            myList.ToString();
+            string expectedValue = "davidcharliemattnevin";
+
+            Assert.AreEqual(expectedValue, myList.ToString());
+        }
     }
 }
