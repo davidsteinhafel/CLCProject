@@ -46,75 +46,61 @@ namespace CustomListClassProject
         {
             if (Count == Capacity)
             {
-                IncreasedCapacity();
+                T[] tempCopy = new T[Count];
+                Capacity = Capacity * 2;
+                
+                for (int i = 0; i < count; i++)
+                {
+                    tempCopy[i] = items[i];
+                }
+                items = new T[Capacity];
+                for (int i = 0; i < count; i++)
+                {
+                    items[i] = tempCopy[i];
+                }
             }
             items[Count] = item;
             count++;
         }
-        public void IncreasedCapacity()
-        {
-            T[] tempCopy = items;
-            Capacity = Capacity * 2;
-            items = new T[Capacity];
-            for (int i = 0; i < count; i++)
-            {
+        //public void IncreasedCapacity()
+        //{
+        //    T[] tempCopy = items;
+        //    Capacity = Capacity * 2;
 
-                items[i] = tempCopy[i];
-            }
-        }
+        //    items = new T[Capacity];
+
+        //    for (int i = 0; i < count; i++)
+        //    {
+
+        //        items[i] = tempCopy[i];
+        //    }
+        //}
         public void Remove(T item)
         {
             T[] tempCopy = items;
-            items = new T[Capacity];
-            int j;
-            j = 0;
+            int j = 0;
 
-            for (int i = 0; i < count; i++)
+
+            int countBefore = count;
+            for (int i = 0; i < countBefore; i++)
             {
-
-                if (Compare(item, items[i]))
+                if (Compare(item, items[i]) && count == countBefore)
                 {
                     i++;
+                    count--;
                     
                 }
                 tempCopy[j] = items[i];
                 j++;
-                if (i < count)
-                {
-                    items[i] = tempCopy[j];
-                }
-                --count;
             }
-
-            //    for (int i = 0; i < count; i++)
-            //    {
-
-            //        if (Compare(item, items[i]))
-            //        {
-            //            int dontCopy = i;
-            //            counter++;
-            //        }
-            //        else
-            //        {
-            //            for (i = 0; i < count - 1; i++)
-            //            {
-            //                tempArray[Capacity] = items[i];
-            //            }
-
-            //        }
-            //        items[i] = tempArray[i];
-            //        count++;
-
-            //    }
-
-            //    count--;
+            items = tempCopy;
         }
         public bool Compare(T firstValue, T secondValue)
         {
             if (firstValue.Equals(secondValue))
             {
                 return true;
-                
+
             }
             else
             {

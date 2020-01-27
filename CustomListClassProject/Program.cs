@@ -11,7 +11,8 @@ namespace CustomListClassProject
         static void Main(string[] args)
         {
             List<int> list1 = new List<int>() ;
-            list1.Remove(1);
+            int number = 14;
+            number.ToString();
             
         }
     }

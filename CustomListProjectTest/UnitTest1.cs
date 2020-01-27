@@ -113,6 +113,22 @@ namespace CustomListProjectTest
             Assert.AreEqual(expectedValue, myList[0]);
         }
         [TestMethod]
+        public void CheckIndexAfterRemoveWithMultipleNonRemoveDup()
+        {
+            CustomList<int> myList = new CustomList<int>();
+  
+            int expectedValue = 4;
+
+            myList.Add(2);
+            myList.Add(4);
+            myList.Add(6);
+            myList.Add(4);
+            myList.Remove(2);
+            myList.Remove(4);
+
+            Assert.AreEqual(expectedValue, myList[1]);
+        }
+        [TestMethod]
         public void CheckIfItemRemovedSuccesfully()
         {
             CustomList<int> myList = new CustomList<int>();
@@ -140,6 +156,7 @@ namespace CustomListProjectTest
 
             Assert.AreEqual(expectedValue, myList[1]);  
         }
+        [TestMethod]
         public void CheckZeroIndexWhenMutliplesRemoved()
         {
             CustomList<int> myList = new CustomList<int>();
@@ -154,6 +171,7 @@ namespace CustomListProjectTest
 
             Assert.AreEqual(expectedValue, myList[0]);
         }
+        [TestMethod]
         public void CheckCountWhenMultiplesRemoved()
         {
             CustomList<int> myList = new CustomList<int>();
