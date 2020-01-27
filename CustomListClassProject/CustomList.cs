@@ -48,7 +48,7 @@ namespace CustomListClassProject
             {
                 T[] tempCopy = new T[Count];
                 Capacity = Capacity * 2;
-                
+
                 for (int i = 0; i < count; i++)
                 {
                     tempCopy[i] = items[i];
@@ -88,7 +88,6 @@ namespace CustomListClassProject
                 {
                     i++;
                     count--;
-                    
                 }
                 tempCopy[j] = items[i];
                 j++;
@@ -100,13 +99,21 @@ namespace CustomListClassProject
             if (firstValue.Equals(secondValue))
             {
                 return true;
-
             }
             else
             {
                 return false;
             }
         }
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
 
+            for (int i = 0; i < count; i++)
+            {
+                sb.Append(items[i]);
+            }
+            return sb.ToString();
+        }
     }
 }
