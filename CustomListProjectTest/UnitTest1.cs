@@ -260,7 +260,7 @@ namespace CustomListProjectTest
             otherList.Add(3);
             CustomList<int> actualValue = myList - otherList;
 
-            Assert.AreEqual("23", actualValue.ToString());
+            Assert.AreEqual("2", actualValue.ToString());
         }
         [TestMethod]
         public void SubtractingStringLists()
@@ -273,7 +273,7 @@ namespace CustomListProjectTest
             otherList.Add("david");
             otherList.Add("jimmy");
             CustomList<string> actualValue = myList - otherList;
-            Assert.AreEqual("lucasjimmy", actualValue.ToString());
+            Assert.AreEqual("lucas", actualValue.ToString());
         }
         [TestMethod]
         public void SubtractingStringListsWithNoSharedItems()
@@ -286,7 +286,7 @@ namespace CustomListProjectTest
             otherList.Add("kelsey");
             otherList.Add("jimmy");
             CustomList<string> actualValue = myList - otherList;
-            Assert.AreEqual("davidjohnlucaskelseyjimmy", actualValue);
+            Assert.AreEqual("davidjohnlucas", actualValue.ToString());
         }
         [TestMethod]
         public void SubtractingIntegerListsWithIdenticalItems()

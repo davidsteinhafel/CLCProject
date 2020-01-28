@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomListClassProject
 {
-    public class CustomList<T>
+    public class CustomList<T> : IEnumerable
     {
         int count;
         T[] items;
@@ -42,6 +43,15 @@ namespace CustomListClassProject
             items = new T[Capacity];
             count = 0;
         }
+        public IEnumerator GetEnumerator()
+        {
+            for (int i = 0; i < Count; i++)
+            {
+
+                yield return items[i];
+
+            }
+        }
         public void Add(T item)
         {
             if (Count == Capacity)
@@ -62,19 +72,6 @@ namespace CustomListClassProject
             items[Count] = item;
             count++;
         }
-        //public void IncreasedCapacity()
-        //{
-        //    T[] tempCopy = items;
-        //    Capacity = Capacity * 2;
-
-        //    items = new T[Capacity];
-
-        //    for (int i = 0; i < count; i++)
-        //    {
-
-        //        items[i] = tempCopy[i];
-        //    }
-        //}
         public void Remove(T item)
         {
             T[] tempCopy = items;
@@ -84,7 +81,7 @@ namespace CustomListClassProject
             int countBefore = count;
             for (int i = 0; i < countBefore; i++)
             {
-                if (Compare(item, items[i]) && count == countBefore)
+                if (item.Equals( items[i]) && count == countBefore)
                 {
                     i++;
                     count--;
@@ -133,26 +130,55 @@ namespace CustomListClassProject
         public static CustomList<T> operator -(CustomList<T> myList, CustomList<T> otherList)
         {
             CustomList<T> returnedList = new CustomList<T>();
-            
-            for (int i = 0; i < myList.Count; i++)
-            {
-                if (myList.items[i].Equals(otherList.items[i]))
-                {
-                    returnedList.Remove(myList.items[i]);
-                }
-                
 
-            }
-            for (int j = 0; j < otherList.Count; j++)
+            for(int i = 0; i < myList.Count; i++)
             {
-                if (otherList.items[j].Equals(myList.items[j]))
+                // 1223
+                // 324
+                if (!otherList.Contains(myList[i]))
                 {
-                    returnedList.Remove(otherList.items[j]);
+                    returnedList.Add(myList[i]);
+                    // 1
                 }
                 
             }
             return returnedList;
-        }
+            //if(myList.Count > otherList.Count)
+            //{
+            //    for (int i = 0; i < myList.Count; i++)
+            //    {
+            //        if (!otherList.Contains(myList.items[i]) || !myList.Contains(otherList.items[i]))
+            //        {
+            //            returnedList.Add(myList.items[i]);
+            //            returnedList.Add(otherList.items[i]);
+            //        }
+            //    }
+            //}
+            //if(myList.Count <= otherList.Count)
+            //{
+            //    for (int i = 0; i < otherList.Count; i++)
+            //    {
+            //        if (!myList.Contains(otherList.items[i]) || !otherList.Contains(myList.items[i]))
+            //        {
+            //            returnedList.Add(myList.items[i]);
+            //            returnedList.Add(otherList.items[i]);
+            //        }
+            //    }
+            //}
 
+            return returnedList;
+        }
+        public bool Contains(T item)
+        {
+            bool hasFound = false;
+            for (int i = 0; i < Count; i++)
+            {
+                if (item.Equals(items[i]))
+                {
+                    hasFound = true;
+                }
+            }
+            return hasFound;
+        }
     }
 }
