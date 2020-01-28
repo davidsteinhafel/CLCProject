@@ -249,5 +249,57 @@ namespace CustomListProjectTest
 
             Assert.AreEqual("12344", actualValue.ToString());
         }
+        [TestMethod]
+        public void SubstractingTwoDifferentLists()
+        {
+            CustomList<int> myList = new CustomList<int>();
+            CustomList<int> otherList = new CustomList<int>();
+            myList.Add(1);
+            myList.Add(2);
+            otherList.Add(1);
+            otherList.Add(3);
+            CustomList<int> actualValue = myList - otherList;
+
+            Assert.AreEqual("23", actualValue.ToString());
+        }
+        [TestMethod]
+        public void SubtractingStringLists()
+        {
+            CustomList<string> myList = new CustomList<string>();
+            CustomList<string> otherList = new CustomList<string>();
+            myList.Add("david");
+            myList.Add("david");
+            myList.Add("lucas");
+            otherList.Add("david");
+            otherList.Add("jimmy");
+            CustomList<string> actualValue = myList - otherList;
+            Assert.AreEqual("lucasjimmy", actualValue.ToString());
+        }
+        [TestMethod]
+        public void SubtractingStringListsWithNoSharedItems()
+        {
+            CustomList<string> myList = new CustomList<string>();
+            CustomList<string> otherList = new CustomList<string>();
+            myList.Add("david");
+            myList.Add("john");
+            myList.Add("lucas");
+            otherList.Add("kelsey");
+            otherList.Add("jimmy");
+            CustomList<string> actualValue = myList - otherList;
+            Assert.AreEqual("davidjohnlucaskelseyjimmy", actualValue);
+        }
+        [TestMethod]
+        public void SubtractingIntegerListsWithIdenticalItems()
+        {
+            CustomList<int> myList = new CustomList<int>();
+            CustomList<int> otherList = new CustomList<int>();
+            myList.Add(1);
+            myList.Add(1);
+            otherList.Add(1);
+            otherList.Add(1);
+            CustomList<int> actualValue = myList - otherList;
+
+            Assert.AreEqual(0, actualValue.Count);
+        }
     }
 }

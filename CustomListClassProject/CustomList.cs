@@ -115,5 +115,44 @@ namespace CustomListClassProject
             }
             return sb.ToString();
         }
+        public static CustomList<T> operator +(CustomList<T> myList, CustomList<T> otherList)
+        {
+            CustomList<T> returnedList = new CustomList<T>();
+            for (int i = 0; i < myList.Count; i++)
+            {
+
+                returnedList.Add(myList.items[i]);
+
+            }
+            for (int j = 0; j < otherList.Count; j++)
+            {
+                returnedList.Add(otherList.items[j]);
+            }
+            return returnedList;
+        }
+        public static CustomList<T> operator -(CustomList<T> myList, CustomList<T> otherList)
+        {
+            CustomList<T> returnedList = new CustomList<T>();
+            
+            for (int i = 0; i < myList.Count; i++)
+            {
+                if (myList.items[i].Equals(otherList.items[i]))
+                {
+                    returnedList.Remove(myList.items[i]);
+                }
+                
+
+            }
+            for (int j = 0; j < otherList.Count; j++)
+            {
+                if (otherList.items[j].Equals(myList.items[j]))
+                {
+                    returnedList.Remove(otherList.items[j]);
+                }
+                
+            }
+            return returnedList;
+        }
+
     }
 }
