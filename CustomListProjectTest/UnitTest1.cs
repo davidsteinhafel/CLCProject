@@ -301,5 +301,48 @@ namespace CustomListProjectTest
 
             Assert.AreEqual(0, actualValue.Count);
         }
+        [TestMethod]
+        public void ZipTwoIntLists()
+        {
+            CustomList<int> myList = new CustomList<int>();
+            CustomList<int> otherList = new CustomList<int>();
+            myList.Add(1);
+            myList.Add(3);
+            myList.Add(5);
+            otherList.Add(2);
+            otherList.Add(4);
+            otherList.Add(6);
+
+            CustomList<int> actualValue = myList + otherList;
+            Assert.AreEqual("123456", actualValue.ToString());
+        }
+        [TestMethod]
+        public void ZipTwoStringLists()
+        {
+            CustomList<string> myList = new CustomList<string>();
+            CustomList<string> otherList = new CustomList<string>();
+            myList.Add("david");
+            myList.Add("jimmy");
+            myList.Add("lucas");
+            otherList.Add("kelsey");
+            otherList.Add("katie");
+            otherList.Add("jennifer");
+            CustomList<string> actualValue = myList + otherList;
+            Assert.AreEqual("davidkelseyjimmykatielucasjennifer", actualValue.ToString());
+        }
+        [TestMethod]
+        public void ZipTwoDifferentSizeLists()
+        {
+            CustomList<string> myList = new CustomList<string>();
+            CustomList<string> otherList = new CustomList<string>();
+            myList.Add("david");
+            myList.Add("jimmy");
+            myList.Add("lucas");
+            myList.Add("donald");
+            otherList.Add("kelsey");
+            otherList.Add("katie");
+            CustomList<string> actualValue = myList + otherList;
+            Assert.AreEqual("davidkelseyjimmykatielucasdonald", actualValue.ToString());
+        }
     }
 }

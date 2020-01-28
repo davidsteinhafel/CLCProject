@@ -133,39 +133,13 @@ namespace CustomListClassProject
 
             for(int i = 0; i < myList.Count; i++)
             {
-                // 1223
-                // 324
+                
                 if (!otherList.Contains(myList[i]))
                 {
                     returnedList.Add(myList[i]);
-                    // 1
                 }
                 
             }
-            return returnedList;
-            //if(myList.Count > otherList.Count)
-            //{
-            //    for (int i = 0; i < myList.Count; i++)
-            //    {
-            //        if (!otherList.Contains(myList.items[i]) || !myList.Contains(otherList.items[i]))
-            //        {
-            //            returnedList.Add(myList.items[i]);
-            //            returnedList.Add(otherList.items[i]);
-            //        }
-            //    }
-            //}
-            //if(myList.Count <= otherList.Count)
-            //{
-            //    for (int i = 0; i < otherList.Count; i++)
-            //    {
-            //        if (!myList.Contains(otherList.items[i]) || !otherList.Contains(myList.items[i]))
-            //        {
-            //            returnedList.Add(myList.items[i]);
-            //            returnedList.Add(otherList.items[i]);
-            //        }
-            //    }
-            //}
-
             return returnedList;
         }
         public bool Contains(T item)
