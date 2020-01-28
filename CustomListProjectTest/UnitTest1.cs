@@ -302,46 +302,44 @@ namespace CustomListProjectTest
             Assert.AreEqual(0, actualValue.Count);
         }
         [TestMethod]
-        public void ZipTwoIntLists()
+        public void ZipLists_TwoIntLists()
         {
-            CustomList<int> myList = new CustomList<int>();
-            CustomList<int> otherList = new CustomList<int>();
-            myList.Add(1);
-            myList.Add(3);
-            myList.Add(5);
-            otherList.Add(2);
-            otherList.Add(4);
-            otherList.Add(6);
+            CustomList<int> even = new CustomList<int>();
+            CustomList<int> odd = new CustomList<int>();
 
-            CustomList<int> actualValue = myList + otherList;
-            Assert.AreEqual("123456", actualValue.ToString());
+            even.Add(2);
+            even.Add(4);
+            odd.Add(1);
+            odd.Add(3);
+            CustomList<int> actual = even.ZipLists(odd);
+            Assert.AreEqual("2143", actual.ToString());
         }
         [TestMethod]
         public void ZipTwoStringLists()
         {
-            CustomList<string> myList = new CustomList<string>();
-            CustomList<string> otherList = new CustomList<string>();
-            myList.Add("david");
-            myList.Add("jimmy");
-            myList.Add("lucas");
-            otherList.Add("kelsey");
-            otherList.Add("katie");
-            otherList.Add("jennifer");
-            CustomList<string> actualValue = myList + otherList;
+            CustomList<string> even = new CustomList<string>();
+            CustomList<string> odd = new CustomList<string>();
+            even.Add("david");
+            even.Add("jimmy");
+            even.Add("lucas");
+            odd.Add("kelsey");
+            odd.Add("katie");
+            odd.Add("jennifer");
+            CustomList<string> actualValue = even.ZipLists(odd);
             Assert.AreEqual("davidkelseyjimmykatielucasjennifer", actualValue.ToString());
         }
         [TestMethod]
         public void ZipTwoDifferentSizeLists()
         {
-            CustomList<string> myList = new CustomList<string>();
-            CustomList<string> otherList = new CustomList<string>();
-            myList.Add("david");
-            myList.Add("jimmy");
-            myList.Add("lucas");
-            myList.Add("donald");
-            otherList.Add("kelsey");
-            otherList.Add("katie");
-            CustomList<string> actualValue = myList + otherList;
+            CustomList<string> even = new CustomList<string>();
+            CustomList<string> odd = new CustomList<string>();
+            even.Add("david");
+            even.Add("jimmy");
+            even.Add("lucas");
+            even.Add("donald");
+            odd.Add("kelsey");
+            odd.Add("katie");
+            CustomList<string> actualValue = even.ZipLists(odd);
             Assert.AreEqual("davidkelseyjimmykatielucasdonald", actualValue.ToString());
         }
     }

@@ -154,5 +154,16 @@ namespace CustomListClassProject
             }
             return hasFound;
         }
+        public CustomList<T> ZipLists(CustomList<T> even)
+        {
+            {
+                CustomList<T> returnedList = new CustomList<T>();
+                for (int i = 0; i < Count; i++)
+                {
+                    returnedList.Add(myList.items[i]);
+                }
+                return returnedList;
+            }
+        }
     }
 }
