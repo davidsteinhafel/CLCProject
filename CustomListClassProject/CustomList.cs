@@ -154,13 +154,26 @@ namespace CustomListClassProject
             }
             return hasFound;
         }
-        public CustomList<T> ZipLists(CustomList<T> even)
+        //EasterEgg Below 
+        public static CustomList<T> ZipLists(CustomList<T> even, CustomList<T> odd)
         {
             {
                 CustomList<T> returnedList = new CustomList<T>();
-                for (int i = 0; i < Count; i++)
+                if(even.Count >= odd.Count)
                 {
-                    returnedList.Add(myList.items[i]);
+                    for (int i = 0; i < even.Count; i++)
+                    {
+                        returnedList.Add(even.items[i]);
+                        returnedList.Add(odd.items[i]);
+                    }
+                }
+                if(even.Count < odd.Count)
+                {
+                    for (int i = 0; i < even.Count; i++)
+                    {
+                        returnedList.Add(even.items[i]);
+                        returnedList.Add(odd.items[i]);
+                    }
                 }
                 return returnedList;
             }

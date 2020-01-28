@@ -311,7 +311,7 @@ namespace CustomListProjectTest
             even.Add(4);
             odd.Add(1);
             odd.Add(3);
-            CustomList<int> actual = even.ZipLists(odd);
+            CustomList<int> actual = CustomList<int>.ZipLists(even, odd);
             Assert.AreEqual("2143", actual.ToString());
         }
         [TestMethod]
@@ -325,7 +325,7 @@ namespace CustomListProjectTest
             odd.Add("kelsey");
             odd.Add("katie");
             odd.Add("jennifer");
-            CustomList<string> actualValue = even.ZipLists(odd);
+            CustomList<string> actualValue = CustomList<string>.ZipLists(even, odd);
             Assert.AreEqual("davidkelseyjimmykatielucasjennifer", actualValue.ToString());
         }
         [TestMethod]
@@ -335,12 +335,12 @@ namespace CustomListProjectTest
             CustomList<string> odd = new CustomList<string>();
             even.Add("david");
             even.Add("jimmy");
-            even.Add("lucas");
-            even.Add("donald");
+            odd.Add("lucas");
+            odd.Add("donald");
             odd.Add("kelsey");
             odd.Add("katie");
-            CustomList<string> actualValue = even.ZipLists(odd);
-            Assert.AreEqual("davidkelseyjimmykatielucasdonald", actualValue.ToString());
+            CustomList<string> actualValue = CustomList<string>.ZipLists(even, odd);
+            Assert.AreEqual("davidlucasjimmydonald", actualValue.ToString());
         }
     }
 }
