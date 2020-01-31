@@ -1,0 +1,25 @@
+DETAILS: Public Static Operator method for subtracting two lists.
+FUNCTIONALITY: User-defined List type can implement the operation of the operator. In this case the operator can perform
+subtraction on the operands. The operands would be the user-defined lists.
+SYNTAX: CustomList<T> listName - CustomList<T> list2Name = CustomList<T>
+PARAMETERS: (CustomList<T> firstList, CustomList<T> secondList)
+RETURN TYPE: CustomList<T>
+
+
+Example:
+
+
+List<int> list1 = new List<int>();
+List<int> list2 = new List<int>();
+List<int> resultingList = new List<int>();
+
+
+list1.add(1)
+list1.add(2)
+list2.add(2)
+list2.add(3)
+
+list1 - list2 = result
+Console.Writeline(result.ToString())
+
+Output: 1
